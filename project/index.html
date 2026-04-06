@@ -10,7 +10,15 @@
       rel="stylesheet"
     />
 
-    <title>Wedding Invitation</title>
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.png" type="image/png" />
+
+    <title>Jeyaraj 💍 Kaveri | Wedding Invitation</title>
+
+    <meta
+      name="description"
+      content="You are cordially invited to the wedding of S. Jeyaraj and K. Kaveri on April 20, 2026."
+    />
 
     <style>
       body {
@@ -18,19 +26,6 @@
         font-family: "Poppins", sans-serif;
         background: linear-gradient(135deg, #fdf6f0, #f8e8e8);
         overflow-x: hidden;
-      }
-
-      /* Animations */
-      @keyframes float {
-        0% {
-          transform: translateY(0px);
-        }
-        50% {
-          transform: translateY(-12px);
-        }
-        100% {
-          transform: translateY(0px);
-        }
       }
 
       @keyframes fadeIn {
@@ -41,6 +36,16 @@
         to {
           opacity: 1;
           transform: translateY(0);
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
         }
       }
 
@@ -56,39 +61,16 @@
         }
       }
 
-      @keyframes heartbeat {
-        0%,
-        100% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.05);
-        }
-      }
-
-      @keyframes glowPulse {
-        0% {
-          box-shadow: 0 0 10px #ff9a9e;
-        }
-        50% {
-          box-shadow: 0 0 25px #ff4d6d;
-        }
-        100% {
-          box-shadow: 0 0 10px #ff9a9e;
-        }
-      }
-
       @keyframes fall {
         to {
           transform: translateY(100vh);
         }
       }
 
-      /* Layout */
       .container {
         text-align: center;
         padding: 40px 20px;
-        animation: fadeIn 1.5s ease-in-out;
+        animation: fadeIn 1.5s ease;
       }
 
       .card {
@@ -98,10 +80,8 @@
         max-width: 500px;
         margin: auto;
         box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-        animation: fadeIn 2s ease-in-out;
       }
 
-      /* Heart Image */
       .ganesha {
         display: flex;
         justify-content: center;
@@ -110,56 +90,43 @@
       }
 
       .ganesha img {
-        width: 80px;
+        width: 90px;
         border-radius: 50%;
-        animation:
-          glowPulse 2s infinite,
-          heartbeat 1.5s infinite;
-        transition: 0.3s;
       }
 
-      .ganesha img:hover {
-        transform: scale(1.15);
-      }
-
-      /* Title */
       h1 {
         font-family: "Great Vibes", cursive;
-        font-size: 36px;
+        font-size: 40px;
         background: linear-gradient(45deg, #ff4d6d, #b76e79);
         -webkit-background-clip: text;
         color: transparent;
         animation: glow 3s infinite;
       }
 
-      /* Names */
       .names {
         font-family: "Great Vibes", cursive;
-        font-size: 28px;
+        font-size: 30px;
         color: #b76e79;
         margin: 10px 0;
-        animation: heartbeat 2s infinite;
       }
 
-      /* Invite Text */
       .invite-text {
         font-family: "Playfair Display", serif;
         font-style: italic;
-        font-size: 16px;
         color: #555;
         line-height: 1.7;
       }
 
-      /* Buttons */
       .btn {
         display: inline-block;
         margin: 10px;
-        padding: 12px 20px;
-        background: linear-gradient(45deg, #b76e79, #ff7e5f);
+        padding: 12px 22px;
+        background: linear-gradient(45deg, #ff4d6d, #ff7e5f);
         color: white;
         border-radius: 12px;
         text-decoration: none;
         transition: 0.3s;
+        font-weight: 500;
       }
 
       .btn:hover {
@@ -167,7 +134,6 @@
         box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
       }
 
-      /* Flowers */
       .flower {
         position: fixed;
         top: -50px;
@@ -175,7 +141,6 @@
         animation: fall linear infinite;
       }
 
-      /* Start Screen */
       #startScreen {
         position: fixed;
         top: 0;
@@ -235,28 +200,21 @@
         <h3>April 20, 2026</h3>
         <p>9:30 AM – 10:30 AM</p>
 
-        <a
-          class="btn"
-          href="https://www.google.com/maps/place/A.S.V+Mandapam/data=!4m2!3m1!1s0x0:0x200d8d9ffcda74ed"
-        >
+        <a class="btn" href="https://www.google.com/maps/place/A.S.V+Mandapam">
           📍 Wedding Location
         </a>
 
-        <a
-          class="btn"
-          href="https://www.google.com/maps/place/10%C2%B012'10.7%22N+78%C2%B036'41.9%22E/"
-        >
+        <a class="btn" href="https://www.google.com/maps">
           🍽 Reception Location
         </a>
 
         <p class="invite-text">Lunch follows at 11:00 AM</p>
-
         <p class="invite-text">🙏 Your presence will be a blessing to us 🙏</p>
       </div>
     </div>
 
     <script>
-      // Flowers
+      // Flower animation
       for (let i = 0; i < 30; i++) {
         let f = document.createElement("div");
         f.className = "flower";
@@ -266,31 +224,14 @@
         f.style.opacity = Math.random();
         document.body.appendChild(f);
       }
-      // for (let i = 0; i < 5; i++) {
-      //   let f = document.createElement("div");
-      //   f.className = "flower";
-      //   f.innerHTML = ` <div class="ganesha">
-      //     <img src="./puso-heart.gif" alt="heart" />
-      //   </div>`;
-      //   f.style.left = Math.random() * 100 + "vw";
-      //   f.style.animationDuration = 4 + Math.random() * 6 + "s";
-      //   f.style.opacity = Math.random();
-      //   document.body.appendChild(f);
-      // }
 
-      // Music Start
+      // Start Invitation
       function startInvite() {
         const music = document.getElementById("bgMusic");
-        music.volume = 0;
-        music.play();
 
-        let v = 0;
-        let fade = setInterval(() => {
-          if (v < 1) {
-            v += 0.05;
-            music.volume = v;
-          } else clearInterval(fade);
-        }, 200);
+        music.play().catch(() => {
+          console.log("Autoplay blocked, user interaction required");
+        });
 
         document.getElementById("startScreen").style.display = "none";
       }
