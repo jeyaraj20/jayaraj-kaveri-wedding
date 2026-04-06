@@ -10,34 +10,7 @@
     />
 
     <link rel="icon" href="favicon.png" type="image/png" />
-
     <title>Jeyaraj 💍 Kaveri | Wedding Invitation</title>
-
-    <meta
-      name="description"
-      content="You are cordially invited to the wedding of Jeyaraj & Kaveri on April 20, 2026 💍"
-    />
-
-    <meta property="og:title" content="Jeyaraj ❤️ Kaveri Wedding Invitation" />
-    <meta
-      property="og:description"
-      content="Join us on April 20, 2026 💍 Your presence will be a blessing to us!"
-    />
-    <meta property="og:image" content="/public/invitation.png" />
-
-    <meta
-      property="og:url"
-      content="https://jeyaraj-kaveri-wedding.onrender.com/"
-    />
-    <meta property="og:type" content="website" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Jeyaraj 💍 Kaveri Wedding Invitation" />
-    <meta name="twitter:description" content="Join us on April 20, 2026 💖" />
-    <meta
-      name="twitter:image"
-      content="https://jeyaraj-kaveri-wedding.onrender.com/preview.jpg"
-    />
 
     <style>
       body {
@@ -47,52 +20,11 @@
         overflow-x: hidden;
       }
 
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-10px);
-        }
-      }
-
-      @keyframes glow {
-        0% {
-          text-shadow: 0 0 5px #ff9a9e;
-        }
-        50% {
-          text-shadow: 0 0 20px #ff4d6d;
-        }
-        100% {
-          text-shadow: 0 0 5px #ff9a9e;
-        }
-      }
-
-      @keyframes fall {
-        to {
-          transform: translateY(100vh);
-        }
-      }
-
       .container {
         text-align: center;
         padding: 40px 20px;
-        animation: fadeIn 1.5s ease;
       }
 
-      /* UPDATED CARD CSS to fit the floral frame */
       .card {
         background: #fbedf8;
         border-radius: 25px;
@@ -100,18 +32,13 @@
         max-width: 500px;
         margin: auto;
         box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-      }
-
-      .ganesha {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 15px;
-        animation: float 3s infinite;
+        position: relative;
+        z-index: 10;
       }
 
       .ganesha img {
         width: 90px;
-        border-radius: 50%;
+        animation: float 3s infinite;
       }
 
       h1 {
@@ -154,12 +81,13 @@
         box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
       }
 
-      .flower {
+      .flower,
+      .border-flower {
         position: fixed;
-        top: -50px;
+        pointer-events: none;
         font-size: 20px;
-        animation: fall linear infinite;
-        z-index: 1; /* Keep behind card */
+        z-index: 1;
+        user-select: none;
       }
 
       #startScreen {
@@ -192,29 +120,35 @@
         background: #dc3379;
         color: white;
         cursor: pointer;
-        z-index: 10000; /* Ensure button is clickable above flowers */
+        z-index: 10000;
       }
-
+      .flower,
       .border-flower {
-        position: absolute;
+        position: fixed;
+        pointer-events: none; /* allow clicks through flowers */
         font-size: 20px;
-        pointer-events: none;
-        opacity: 0.8;
-        transition: transform 0.1s linear;
+        z-index: 999; /* bring flowers over card */
+        user-select: none;
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
       }
 
-      /* Mobile Responsiveness for the new Frame */
-      @media (max-width: 600px) {
-        .card {
-          padding: 50px 45px;
-          aspect-ratio: auto;
-          min-height: 650px;
+      @keyframes glow {
+        0% {
+          text-shadow: 0 0 5px #ff9a9e;
         }
-        h1 {
-          font-size: 30px;
+        50% {
+          text-shadow: 0 0 20px #ff4d6d;
         }
-        .names {
-          font-size: 26px;
+        100% {
+          text-shadow: 0 0 5px #ff9a9e;
         }
       }
     </style>
@@ -235,17 +169,13 @@
         <div class="ganesha">
           <img src="./puso-hear-1.gif" alt="heart" />
         </div>
-
         <h1>Wedding Invitation</h1>
-
         <div class="names">Jeyaraj 💍 Kaveri</div>
-
         <p class="invite-text">
           With the blessings of our elders and the grace of the Almighty,<br />
           we joyfully invite you to share in our happiness as we unite in
           marriage.
         </p>
-
         <h3
           style="
             color: #dc3379;
@@ -264,133 +194,144 @@
         >
           9:30 AM – 10:30 AM
         </p>
-
         <div style="margin-top: 15px">
           <a
             class="btn"
             href="https://www.google.com/maps/place/A.S.V+Mandapam/data=!4m2!3m1!1s0x0:0x200d8d9ffcda74ed"
+            >💍Wedding📍</a
           >
-            💍Wedding📍
-          </a>
-
           <a
             class="btn"
             href="https://www.google.com/maps/place/10%C2%B012'10.7%22N+78%C2%B036'41.9%22E/"
+            >🍽 Reception📍</a
           >
-            🍽 Reception📍
-          </a>
         </div>
-
         <p class="invite-text">Lunch follows at 11:00 AM</p>
         <p class="invite-text">🙏 Your presence will be a blessing to us 🙏</p>
       </div>
     </div>
 
     <script>
-      for (let i = 0; i < 30; i++) {
-        let f = document.createElement("div");
-        f.className = "flower";
-        f.innerHTML = "🌸";
-        f.style.left = Math.random() * 100 + "vw";
-        f.style.animationDuration = 4 + Math.random() * 6 + "s";
-        f.style.opacity = Math.random();
-        document.body.appendChild(f);
-      }
-
-      function startInvite() {
-        const music = document.getElementById("bgMusic");
-
-        music.play().catch(() => {
-          console.log("Autoplay blocked, user interaction required");
-        });
-
-        document.getElementById("startScreen").style.display = "none";
-      }
-      const startScreen = document.getElementById("startScreen");
+      /* ===================== Falling Flowers with Rotation ===================== */
       const numFlowers = 80;
       const flowers = [];
-      const interactionDistance = 100; // px
       let mouse = { x: -9999, y: -9999 };
 
-      // Create flowers
       for (let i = 0; i < numFlowers; i++) {
         const f = document.createElement("div");
-        f.className = "border-flower";
+        f.className = "flower";
         f.innerHTML = "🌸";
-
-        // Random initial position
         f.x = Math.random() * window.innerWidth;
-        f.y = Math.random() * window.innerHeight;
-
-        // Random speed
-        f.vx = (Math.random() - 0.5) * 0.5;
-        f.vy = (Math.random() - 0.5) * 0.5;
-
-        // Random size
-        const size = 15 + Math.random() * 15;
-        f.style.fontSize = size + "px";
-
-        // Set initial position
-        f.style.left = f.x + "px";
-        f.style.top = f.y + "px";
-
-        startScreen.appendChild(f);
+        f.y = Math.random() * -window.innerHeight;
+        f.vx = (Math.random() - 0.5) * 0.2;
+        f.vy = 1 + Math.random() * 2;
+        f.size = 15 + Math.random() * 15;
+        f.angle = Math.random() * 360;
+        f.angularSpeed = (Math.random() - 0.5) * 2; // rotation speed
+        f.style.fontSize = f.size + "px";
+        f.style.opacity = 0.4 + Math.random() * 0.6;
+        document.body.appendChild(f);
         flowers.push(f);
       }
 
-      // Animate flowers
       function animateFlowers() {
         flowers.forEach((f) => {
           f.x += f.vx;
           f.y += f.vy;
+          f.angle += f.angularSpeed;
 
-          // Bounce off edges
-          if (f.x < 0 || f.x > window.innerWidth - 20) f.vx *= -1;
-          if (f.y < 0 || f.y > window.innerHeight - 20) f.vy *= -1;
+          if (f.y > window.innerHeight) {
+            f.y = -20;
+            f.x = Math.random() * window.innerWidth;
+          }
 
-          // React to mouse
           const dx = f.x - mouse.x;
           const dy = f.y - mouse.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
+          const interactionDistance = 100;
 
           if (dist < interactionDistance) {
-            // Push flower away slightly
             const force =
-              ((interactionDistance - dist) / interactionDistance) * 2; // strength
+              ((interactionDistance - dist) / interactionDistance) * 2;
             f.x += (dx / dist) * force;
             f.y += (dy / dist) * force;
           }
 
           f.style.left = f.x + "px";
           f.style.top = f.y + "px";
+          f.style.transform = `rotate(${f.angle}deg)`;
         });
 
         requestAnimationFrame(animateFlowers);
       }
       animateFlowers();
 
-      // Track mouse or touch
+      /* ===================== Border Flowers on Start Screen ===================== */
+      const startScreen = document.getElementById("startScreen");
+      const numBorderFlowers = 80;
+      const borderFlowers = [];
+      for (let i = 0; i < numBorderFlowers; i++) {
+        const f = document.createElement("div");
+        f.className = "border-flower";
+        f.innerHTML = "🌸";
+        f.x = Math.random() * window.innerWidth;
+        f.y = Math.random() * window.innerHeight;
+        f.vx = (Math.random() - 0.5) * 0.5;
+        f.vy = (Math.random() - 0.5) * 0.5;
+        f.style.fontSize = 15 + Math.random() * 15 + "px";
+        startScreen.appendChild(f);
+        borderFlowers.push(f);
+      }
+
+      function animateBorderFlowers() {
+        borderFlowers.forEach((f) => {
+          f.x += f.vx;
+          f.y += f.vy;
+          if (f.x < 0 || f.x > window.innerWidth - 20) f.vx *= -1;
+          if (f.y < 0 || f.y > window.innerHeight - 20) f.vy *= -1;
+
+          const dx = f.x - mouse.x;
+          const dy = f.y - mouse.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 100) {
+            const force = ((100 - dist) / 100) * 2;
+            f.x += (dx / dist) * force;
+            f.y += (dy / dist) * force;
+          }
+          f.style.left = f.x + "px";
+          f.style.top = f.y + "px";
+        });
+        requestAnimationFrame(animateBorderFlowers);
+      }
+      animateBorderFlowers();
+
+      /* ===================== Mouse/Touch Events ===================== */
       window.addEventListener("mousemove", (e) => {
         mouse.x = e.clientX;
         mouse.y = e.clientY;
       });
-
       window.addEventListener("touchmove", (e) => {
         if (e.touches.length > 0) {
           mouse.x = e.touches[0].clientX;
           mouse.y = e.touches[0].clientY;
         }
       });
-
       window.addEventListener("mouseleave", () => {
         mouse.x = -9999;
         mouse.y = -9999;
       });
-
       window.addEventListener("touchend", () => {
         mouse.x = -9999;
         mouse.y = -9999;
       });
+
+      function startInvite() {
+        document
+          .getElementById("bgMusic")
+          .play()
+          .catch(() => {});
+        startScreen.style.display = "none";
+      }
     </script>
   </body>
 </html>
