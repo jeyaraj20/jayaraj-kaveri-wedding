@@ -4,25 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&family=Playfair+Display:ital@1&display=swap"
       rel="stylesheet"
     />
 
-    <!-- Favicon -->
     <link rel="icon" href="favicon.png" type="image/png" />
 
-    <!-- Title -->
     <title>Jeyaraj 💍 Kaveri | Wedding Invitation</title>
 
-    <!-- SEO -->
     <meta
       name="description"
       content="You are cordially invited to the wedding of Jeyaraj & Kaveri on April 20, 2026 💍"
     />
 
-    <!-- ✅ Open Graph (WhatsApp Preview) -->
     <meta property="og:title" content="Jeyaraj ❤️ Kaveri Wedding Invitation" />
     <meta
       property="og:description"
@@ -36,7 +31,6 @@
     />
     <meta property="og:type" content="website" />
 
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Jeyaraj 💍 Kaveri Wedding Invitation" />
     <meta name="twitter:description" content="Join us on April 20, 2026 💖" />
@@ -98,6 +92,7 @@
         animation: fadeIn 1.5s ease;
       }
 
+      /* UPDATED CARD CSS to fit the floral frame */
       .card {
         background: white;
         border-radius: 25px;
@@ -164,6 +159,7 @@
         top: -50px;
         font-size: 20px;
         animation: fall linear infinite;
+        z-index: 1; /* Keep behind card */
       }
 
       #startScreen {
@@ -178,6 +174,14 @@
         justify-content: center;
         flex-direction: column;
         z-index: 9999;
+        overflow: hidden;
+      }
+
+      #startScreen h2 {
+        font-family: "Great Vibes";
+        font-size: 45px;
+        color: #dc3379;
+        margin-bottom: 20px;
       }
 
       #startScreen button {
@@ -185,23 +189,43 @@
         font-size: 16px;
         border: none;
         border-radius: 10px;
-        background: #ff4d6d;
+        background: #dc3379;
         color: white;
         cursor: pointer;
+        z-index: 10000; /* Ensure button is clickable above flowers */
+      }
+
+      .border-flower {
+        position: absolute;
+        font-size: 20px;
+        pointer-events: none;
+        opacity: 0.8;
+        transition: transform 0.1s linear;
+      }
+
+      /* Mobile Responsiveness for the new Frame */
+      @media (max-width: 600px) {
+        .card {
+          padding: 100px 45px;
+          aspect-ratio: auto;
+          min-height: 750px;
+        }
+        h1 {
+          font-size: 30px;
+        }
+        .names {
+          font-size: 26px;
+        }
       }
     </style>
   </head>
 
   <body>
-    <!-- Start Screen -->
     <div id="startScreen">
-      <h2 style="font-family: &quot;Great Vibes&quot;; font-size: 32px">
-        💌 Wedding Invitation
-      </h2>
+      <h2>Wedding Invitation</h2>
       <button onclick="startInvite()">Open Invitation 🎉</button>
     </div>
 
-    <!-- Music -->
     <audio id="bgMusic" loop>
       <source src="./bgm.mp3" type="audio/mpeg" />
     </audio>
@@ -222,22 +246,40 @@
           marriage.
         </p>
 
-        <h3>April 20, 2026</h3>
-        <p>9:30 AM – 10:30 AM</p>
-
-        <a
-          class="btn"
-          href="https://www.google.com/maps/place/A.S.V+Mandapam/data=!4m2!3m1!1s0x0:0x200d8d9ffcda74ed"
+        <h3
+          style="
+            color: #dc3379;
+            font-family: &quot;Playfair Display&quot;, serif;
+            margin: 10px 0;
+          "
         >
-          📍 Wedding Location
-        </a>
-
-        <a
-          class="btn"
-          href="https://www.google.com/maps/place/10%C2%B012'10.7%22N+78%C2%B036'41.9%22E/"
+          April 20, 2026
+        </h3>
+        <p
+          style="
+            margin: 0;
+            font-family: &quot;Playfair Display&quot;, serif;
+            color: #555;
+          "
         >
-          🍽 Reception Location
-        </a>
+          9:30 AM – 10:30 AM
+        </p>
+
+        <div style="margin-top: 15px">
+          <a
+            class="btn"
+            href="https://www.google.com/maps/place/A.S.V+Mandapam/data=!4m2!3m1!1s0x0:0x200d8d9ffcda74ed"
+          >
+            📍 Wedding Location
+          </a>
+
+          <a
+            class="btn"
+            href="https://www.google.com/maps/place/10%C2%B012'10.7%22N+78%C2%B036'41.9%22E/"
+          >
+            🍽 Reception Location
+          </a>
+        </div>
 
         <p class="invite-text">Lunch follows at 11:00 AM</p>
         <p class="invite-text">🙏 Your presence will be a blessing to us 🙏</p>
@@ -245,7 +287,6 @@
     </div>
 
     <script>
-      // Flower animation
       for (let i = 0; i < 30; i++) {
         let f = document.createElement("div");
         f.className = "flower";
@@ -256,7 +297,6 @@
         document.body.appendChild(f);
       }
 
-      // Start Invitation
       function startInvite() {
         const music = document.getElementById("bgMusic");
 
@@ -266,6 +306,91 @@
 
         document.getElementById("startScreen").style.display = "none";
       }
+      const startScreen = document.getElementById("startScreen");
+      const numFlowers = 60;
+      const flowers = [];
+      const interactionDistance = 100; // px
+      let mouse = { x: -9999, y: -9999 };
+
+      // Create flowers
+      for (let i = 0; i < numFlowers; i++) {
+        const f = document.createElement("div");
+        f.className = "border-flower";
+        f.innerHTML = "🌸";
+
+        // Random initial position
+        f.x = Math.random() * window.innerWidth;
+        f.y = Math.random() * window.innerHeight;
+
+        // Random speed
+        f.vx = (Math.random() - 0.5) * 0.5;
+        f.vy = (Math.random() - 0.5) * 0.5;
+
+        // Random size
+        const size = 15 + Math.random() * 15;
+        f.style.fontSize = size + "px";
+
+        // Set initial position
+        f.style.left = f.x + "px";
+        f.style.top = f.y + "px";
+
+        startScreen.appendChild(f);
+        flowers.push(f);
+      }
+
+      // Animate flowers
+      function animateFlowers() {
+        flowers.forEach((f) => {
+          f.x += f.vx;
+          f.y += f.vy;
+
+          // Bounce off edges
+          if (f.x < 0 || f.x > window.innerWidth - 20) f.vx *= -1;
+          if (f.y < 0 || f.y > window.innerHeight - 20) f.vy *= -1;
+
+          // React to mouse
+          const dx = f.x - mouse.x;
+          const dy = f.y - mouse.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < interactionDistance) {
+            // Push flower away slightly
+            const force =
+              ((interactionDistance - dist) / interactionDistance) * 2; // strength
+            f.x += (dx / dist) * force;
+            f.y += (dy / dist) * force;
+          }
+
+          f.style.left = f.x + "px";
+          f.style.top = f.y + "px";
+        });
+
+        requestAnimationFrame(animateFlowers);
+      }
+      animateFlowers();
+
+      // Track mouse or touch
+      window.addEventListener("mousemove", (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+      });
+
+      window.addEventListener("touchmove", (e) => {
+        if (e.touches.length > 0) {
+          mouse.x = e.touches[0].clientX;
+          mouse.y = e.touches[0].clientY;
+        }
+      });
+
+      window.addEventListener("mouseleave", () => {
+        mouse.x = -9999;
+        mouse.y = -9999;
+      });
+
+      window.addEventListener("touchend", () => {
+        mouse.x = -9999;
+        mouse.y = -9999;
+      });
     </script>
   </body>
 </html>
